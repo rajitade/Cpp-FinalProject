@@ -1,5 +1,6 @@
 #include <iostream>
 #include "patient.h"
+#include "audit.h" // For logging actions
 using namespace std;
 
 void addPatient(Patient patients[], int &numPatients, int &nextId)
@@ -23,6 +24,9 @@ void addPatient(Patient patients[], int &numPatients, int &nextId)
 
   patients[numPatients++] = p;
   cout << "Patient added successfully. ID: " << p.id << "\n";
+
+  // Log action
+  logAction("SYSTEM", "Added patient ID " + to_string(p.id));
 }
 
 void listPatients(Patient patients[], int numPatients)
@@ -126,4 +130,7 @@ void deletePatient(Patient patients[], int &numPatients)
   }
   numPatients--;
   cout << "Patient deleted successfully.\n";
+
+  // Log action
+  logAction("SYSTEM", "Deleted patient ID " + to_string(id));
 }

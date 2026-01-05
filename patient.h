@@ -15,10 +15,14 @@ struct Patient
 
 const int MAX_PATIENTS = 100;
 
+// ======================= Patient Management =======================
 void addPatient(Patient patients[], int &numPatients, int &nextId);
 void listPatients(Patient patients[], int numPatients);
 int findPatientById(Patient patients[], int numPatients, int id);
 void searchPatient(Patient patients[], int numPatients);
 void deletePatient(Patient patients[], int &numPatients);
+
+// Optional: link to audit logging (implemented in audit.cpp)
+void logPatientAction(const string &action);
 
 #endif
